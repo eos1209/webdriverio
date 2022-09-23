@@ -12,14 +12,15 @@
 
 ### 1.1.1 初始化設定
 
-**[本專案皆使用 npm]**
+**[本專案皆使用 pnpm]**
 
-1. **安裝Package.json套件 :**
-    - npm install
+1. **安裝套件 :**
+    - pnpm install
 
 2. **安裝wdio/cli :**
-    - npm install @wdio/cli
+    - pnpm install @wdio/cli
 
 3. **執行程式 :**
     - npx wdio run ./wdio.conf.js
-        -npx allure open
+4. **查看報告 :**
+    - npx allure open
