@@ -4,69 +4,66 @@ const allure = require("allure-commandline")
 exports.config = {
     //
     // ====================
-    // Runner Configuration
+    // 流道配置
     // ====================
     //
-    // WebdriverIO allows it to run your tests in arbitrary locations (e.g. locally or
-    // on a remote machine).
+    // WebdriverIO 允許它在任意位置（例如本地或遠程機器上）運行您的測試。
+    // 
     runner: 'local',
     //
     // ==================
-    // Specify Test Files
+    // 指定測試文件
     // ==================
-    // Define which test specs should run. The pattern is relative to the directory
-    // from which `wdio` was called. Notice that, if you are calling `wdio` from an
-    // NPM script (see https://docs.npmjs.com/cli/run-script) then the current working
-    // directory is where your package.json resides, so `wdio` will be called from there.
+    // 定義應該運行哪些測試規範。 該模式與調用 `wdio` 的目錄相關。
+    // 請注意，如果您從 NPM 腳本調用 `wdio`（請參閱 https://docs.npmjs.com/cli/run-script），
+    // 則當前工作目錄是您的 package.json 所在的位置，因此 `wdio` 將 從那裡被調用。
     //
     specs: [
         './test/specs/**/allTest.js'
     ],
-    // Patterns to exclude.
+    // 要排除的模式。
     exclude: [
         // 'path/to/excluded/files'
     ],
     //
     // ============
-    // Capabilities
+    // 能力
     // ============
-    // Define your capabilities here. WebdriverIO can run multiple capabilities at the same
-    // time. Depending on the number of capabilities, WebdriverIO launches several test
-    // sessions. Within your capabilities you can overwrite the spec and exclude options in
-    // order to group specific specs to a specific capability.
+    // 在這裡定義你的能力。 WebdriverIO 可以同時運行多個功能。
+    // 根據功能的數量，WebdriverIO 會啟動幾個測試會話。 在您的能力範圍內，
+    // 您可以覆蓋規範並排除選項為了將特定規格分組到特定功能。
     //
-    // First, you can define how many instances should be started at the same time. Let's
-    // say you have 3 different capabilities (Chrome, Firefox, and Safari) and you have
-    // set maxInstances to 1; wdio will spawn 3 processes. Therefore, if you have 10 spec
-    // files and you set maxInstances to 10, all spec files will get tested at the same time
-    // and 30 processes will get spawned. The property handles how many capabilities
-    // from the same test should run tests.
+    // 首先，您可以定義應該同時啟動多少個實例。 讓我們
+    // 假設您有 3 種不同的功能（Chrome、Firefox 和 Safari）並且您有
+    // 將 maxInstances 設置為 1； wdio 將產生 3 個進程。 因此，如果您有 10 個規格
+    // 文件並將 maxInstances 設置為 10，所有規範文件將同時進行測試
+    // 將產生 30 個進程。 屬性處理多少能力
+    // 從同一個測試應該運行測試。
     //
     maxInstances: 10,
     //
-    // If you have trouble getting all important capabilities together, check out the
-    // Sauce Labs platform configurator - a great tool to configure your capabilities:
+    // 如果您無法將所有重要功能整合在一起，請查看
+    // Sauce Labs 平台配置器 - 配置您的功能的絕佳工具：
     // https://docs.saucelabs.com/reference/platforms-configurator
     //
     capabilities: [
-        {
-    
-        // maxInstances can get overwritten per capability. So if you have an in-house Selenium
-        // grid with only 5 firefox instances available you can make sure that not more than
-        // 5 instances get started at a time.
+        {    
+        // maxInstances 可以根據功能被覆蓋。 因此，如果您有內部 Selenium
+        // 只有 5 個可用的 firefox 實例的網格，您可以確保不超過
+        // 一次啟動 5 個實例。
         maxInstances: 5,
         //
         browserName: 'chrome',
         acceptInsecureCerts: true
-        // If outputDir is provided WebdriverIO can capture driver session logs
-        // it is possible to configure which logTypes to include/exclude.
-        // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
+        // 如果提供了 outputDir，WebdriverIO 可以捕獲驅動會話日誌
+        // 可以配置要包含/排除的日誌類型。
+        // excludeDriverLogs: ['*'], // 傳遞 '*' 排除所有驅動會話日誌
         // excludeDriverLogs: ['bugreport', 'server'],
         },
         {
-            // maxInstances can get overwritten per capability. So if you have an in-house Selenium
-            // grid with only 5 firefox instances available you can make sure that not more than
-            // 5 instances get started at a time.
+            // maxInstances 可以根據功能被覆蓋。 因此，如果您有內部 Selenium
+            // 只有 5 個可用的 firefox 實例的網格，您可以確保不超過
+            // 一次啟動 5 個實例。
             maxInstances: 5,
             //
             browserName: 'firefox'
@@ -74,14 +71,14 @@ exports.config = {
     ],
     //
     // ===================
-    // Test Configurations
+    // 測試配置
     // ===================
-    // Define all options that are relevant for the WebdriverIO instance here
+    // 在此處定義與 WebdriverIO 實例相關的所有選項
     //
-    // Level of logging verbosity: trace | debug | info | warn | error | silent
+    // 日誌詳細級別: trace | debug | info | warn | error | silent
     logLevel: 'warn',
     //
-    // Set specific log levels per logger
+    // 為每個記錄器設置特定的日誌級別
     // loggers:
     // - webdriver, webdriverio
     // - @wdio/applitools-service, @wdio/browserstack-service, @wdio/devtools-service, @wdio/sauce-service
@@ -89,58 +86,58 @@ exports.config = {
     // - @wdio/local-runner
     // - @wdio/sumologic-reporter
     // - @wdio/cli, @wdio/config, @wdio/sync, @wdio/utils
-    // Level of logging verbosity: trace | debug | info | warn | error | silent
+    // 日誌記錄詳細程度: trace | debug | info | warn | error | silent
     // logLevels: {
     //     webdriver: 'info',
     //     '@wdio/applitools-service': 'info'
     // },
     //
-    // If you only want to run your tests until a specific amount of tests have failed use
-    // bail (default is 0 - don't bail, run all tests).
+    // 如果您只想運行測試直到特定數量的測試失敗，請使用
+    // 保釋（默認為 0 - 不保釋，運行所有測試）。
     bail: 0,
     //
-    // Set a base URL in order to shorten url command calls. If your `url` parameter starts
-    // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
-    // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
-    // gets prepended directly.
+    // 設置一個基本 URL 以縮短 url 命令調用。 如果您的 `url` 參數開始
+    // 使用 `/`，基本 url 會被添加，不包括你的 baseUrl 的路徑部分。
+    // 如果您的 `url` 參數以沒有方案或 `/`（如 `some/path`）開頭，則基本 url
+    // 直接被前置。
     baseUrl: 'http://localhost',
     //
-    // Default timeout for all waitFor* commands.
+    // 所有 waitFor* 命令的默認超時。
     waitforTimeout: 10000,
     //
-    // Default timeout in milliseconds for request
-    // if browser driver or grid doesn't send response
+    // 請求的默認超時時間（以毫秒為單位）
+    // 如果瀏覽器驅動程序或網格沒有發送響應
     connectionRetryTimeout: 120000,
     //
-    // Default request retries count
+    // 默認請求重試次數
     connectionRetryCount: 3,
     //
-    // Test runner services
-    // Services take over a specific job you don't want to take care of. They enhance
-    // your test setup with almost no effort. Unlike plugins, they don't add new
-    // commands. Instead, they hook themselves up into the test process.
+    // 測試運行器服務
+    // 服務接管您不想處理的特定工作。 他們增強
+    // 你的測試設置幾乎不費吹灰之力。 與插件不同，它們不會添加新的
+    // 命令。 相反，他們將自己融入到測試過程中。
     services: ['chromedriver','intercept'],
     
-    // Framework you want to run your specs with.
-    // The following are supported: Mocha, Jasmine, and Cucumber
-    // see also: https://webdriver.io/docs/frameworks
+    // 您要運行規範的框架。
+    // 支持以下幾種：Mocha、Jasmine 和 Cucumber
+    // 另見：https://webdriver.io/docs/frameworks
     //
-    // Make sure you have the wdio adapter package for the specific framework installed
-    // before running any tests.
+    // 確保您已安裝特定框架的 wdio 適配器包
+    // 在運行任何測試之前。
     framework: 'mocha',
     //
-    // The number of times to retry the entire specfile when it fails as a whole
-    // specFileRetries: 1,
+    // 當整個spec文件失敗時重試整個spec文件的次數 
+    // spec File Retries: 1,
     //
-    // Delay in seconds between the spec file retry attempts
+    // 規範文件重試嘗試之間的延遲（以秒為單位）
     // specFileRetriesDelay: 0,
     //
-    // Whether or not retried specfiles should be retried immediately or deferred to the end of the queue
+    // 重試的規範文件是否應該立即重試或推遲到隊列末尾
     // specFileRetriesDeferred: false,
     //
-    // Test reporter for stdout.
-    // The only one supported by default is 'dot'
-    // see also: https://webdriver.io/docs/dot-reporter
+    // 標準輸出的測試報告器。
+    // 默認支持的唯一一個是 'dot'
+    // 另見：https://webdriver.io/docs/dot-reporter
     reporters: ['spec',
         [
             'allure', 
@@ -153,8 +150,8 @@ exports.config = {
     ],
     
     //
-    // Options to be passed to Mocha.
-    // See the full list at http://mochajs.org/
+    // 傳遞給 Mocha 的選項。
+    // 查看完整列表 http://mochajs.org/
     mochaOpts: {
         ui: 'bdd',
         timeout: 9999000
@@ -163,17 +160,19 @@ exports.config = {
     // =====
     // Hooks
     // =====
-    // WebdriverIO provides several hooks you can use to interfere with the test process in order to enhance
-    // it and to build services around it. You can either apply a single function or an array of
-    // methods to it. If one of them returns with a promise, WebdriverIO will wait until that promise got
-    // resolved to continue.
+    // WebdriverIO 提供了幾個可以用來干擾測試過程的鉤子，以增強
+    // 它並圍繞它構建服務。 您可以應用單個函數或數組
+    // 方法。 如果其中一個返回一個承諾，WebdriverIO 將等到該承諾得到
+    // 決定繼續。
     /**
      * Gets executed once before all workers get launched.
      * @param {Object} config wdio configuration object
      * @param {Array.<Object>} capabilities list of capabilities details
      */
-    // onPrepare: function (config, capabilities) {
-    // },
+     onPrepare: function (config, capabilities) {
+        allure.removeDir("./allure-report"); // 每次執行測試前，會把之前的allure保留的測試結果清空
+        allure.removeDir("./allure-results");
+     },
     /**
      * Gets executed before a worker process is spawned and can be used to initialise specific service
      * for that worker as well as modify runtime environments in an async fashion.
@@ -262,8 +261,7 @@ exports.config = {
     // afterCommand: function (commandName, args, result, error) {
     // },
     /**
-     * Gets executed after all tests are done. You still have access to all global variables from
-     * the test.
+     * 在所有測試完成後執行。 您仍然可以訪問測試中的所有全局變量。
      * @param {Number} result 0 - test pass, 1 - test fail
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that ran
@@ -271,7 +269,7 @@ exports.config = {
     // after: function (result, capabilities, specs) {
     // },
     /**
-     * Gets executed right after terminating the webdriver session.
+     * 在終止 webdriver 會話後立即執行。
      * @param {Object} config wdio configuration object
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that ran
@@ -279,8 +277,8 @@ exports.config = {
     // afterSession: function (config, capabilities, specs) {
     // },
     /**
-     * Gets executed after all workers got shut down and the process is about to exit. An error
-     * thrown in the onComplete hook will result in the test run failing.
+     * 在所有工作人員關閉並且進程即將退出後執行。 一個錯誤
+     * 在 onComplete 鉤子中拋出將導致測試運行失敗。
      * @param {Object} exitCode 0 - success, 1 - fail
      * @param {Object} config wdio configuration object
      * @param {Array.<Object>} capabilities list of capabilities details
@@ -307,10 +305,21 @@ exports.config = {
         })
     },
     /**
-    * Gets executed when a refresh happens.
+    * 發生刷新時執行。
     * @param {String} oldSessionId session ID of the old session
     * @param {String} newSessionId session ID of the new session
     */
     //onReload: function(oldSessionId, newSessionId) {
     //}
 }
+
+// if (NODE_ENV === 'production') {
+//   config.reporters = ['dot', 'spec', 'allure'];
+//   config.reporterOptions = {
+//     junit: {
+//       outputDir: './allure-results'
+//     }
+//   };
+//   config.host = 'hub';
+//   config.port = 4444;
+// }

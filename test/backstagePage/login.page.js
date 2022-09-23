@@ -1,19 +1,19 @@
 const Page = require('./page');
 
 /**
- * sub page containing specific selectors and methods for a specific page
+ * 包含特定頁面的特定選擇器和方法的子頁面
  */
 class LoginPage extends Page {
     /**
-     * define selectors using getter methods
+     * 使用 getter 方法定義選擇器
      */
     get iptUsername () { return $('#account') }
     get iptPassword () { return $('#password') }
     get btnLogin () { return $('#root > div > div.mainView_mainView__3oY3e > div > div > div.MuiCardActions-root.MuiCardActions-spacing.css-1xgg0et > form > button') }
 
     /**
-     * a method to encapsule automation code to interact with the page
-     * e.g. to login using username and password
+     * 一種封裝自動化代碼以與頁面交互的方法
+     * 例如 使用用戶名和密碼登錄
      */
     login (username, password) {
         this.iptUsername.setValue(username);
@@ -22,7 +22,7 @@ class LoginPage extends Page {
     }
 
     /**
-     * overwrite specifc options to adapt it to page object
+     * 覆蓋特定選項以使其適應頁面對象
      */
     open () {
         return super.open('login');
