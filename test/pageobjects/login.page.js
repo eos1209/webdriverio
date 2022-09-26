@@ -5,51 +5,43 @@ let LoginPage = Object.create(Page, {
     content: {
         get: () => {
             return {
-                email: 'demo@keystonejs.com',
-                correctPassword: 'demo',
+                account: 'cherry',
+                Password: 'cherry',
                 worryPassword: '1234',
-                errorMessage: 'The email and password you entered are not valid.',
-                infoMessage: 'You have been signed out.',
+                errorMessage: '帳號或密碼錯誤'
             }
         }
     },
 
     // 定義元素
-    email: {
+    //帳號
+    account: {
         get: function () {
-            return browser.element('input[name=email]');
+            return browser.element('#account');
         }
     },
-    password: {
+    //密碼
+    Password: {
         get: function () {
-            return browser.element('input[name=password]');
+            return browser.element('#password');
         }
     },
+    //登錄
     signIn: {
         get: function () {
-            return browser.element('button[type=submit]');
-        }
-    },
-    signOut: {
-        get: function () {
-            return browser.element('[title="Sign Out"]');
+            return browser.element('#root > div > div.mainView_mainView__3oY3e > div > div > div.MuiCardActions-root.MuiCardActions-spacing.css-1xgg0et > form > button');
         }
     },
     alertDanger: {
         get: function () {
-            return browser.element('[data-alert-type=danger]');
-        }
-    },
-    alertInfo: {
-        get: function () {
-            return browser.element('[data-alert-type=info]');
+            return browser.element('#root > div.SnackbarContainer-top.SnackbarContainer-right.SnackbarContainer-root.css-uwcd5u > div > div > div');
         }
     },
 
     // override 方法
     open: {
         value: function () {
-            Page.open.call(this, 'http://demo.keystonejs.com/keystone/signin');
+            Page.open.call(this, 'login');
         }
     },
     pause: {
@@ -58,7 +50,12 @@ let LoginPage = Object.create(Page, {
         }
     },
 
-    // 自訂方法
+    /**
+     *
+     * 自訂方法
+     *
+     * */
+    //按送出按鈕
     signInClick: {
         value: function () {
             this.signIn.click();
@@ -69,6 +66,7 @@ let LoginPage = Object.create(Page, {
             this.signOut.click();
         }
     },
+    //錯誤彈窗
     waitAlertDangerIsExist: {
         value: function () {
             this.alertDanger.waitForExist();

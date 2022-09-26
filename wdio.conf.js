@@ -1,4 +1,5 @@
 const NODE_ENV = process.env.NODE_ENV || 'development';
+console.log('目前環境變數為：', NODE_ENV);
 
 const allure = require("allure-commandline")
 
@@ -9,7 +10,7 @@ let config = {
     // ====================
     //
     // WebdriverIO 允許它在任意位置（例如本地或遠程機器上）運行您的測試。
-    // 
+    //
     runner: 'local',
     //
     // ==================
@@ -20,7 +21,8 @@ let config = {
     // 則當前工作目錄是您的 package.json 所在的位置，因此 `wdio` 將 從那裡被調用。
     //
     specs: [
-        './test/specs/**/allTest.js'
+        './test/specs/**/login.test.js'
+        // './test/specs/**/*.js'
     ],
     // 要排除的模式。
     exclude: [
@@ -48,27 +50,26 @@ let config = {
     // https://docs.saucelabs.com/reference/platforms-configurator
     //
     capabilities: [
-        {    
-        // maxInstances 可以根據功能被覆蓋。 因此，如果您有內部 Selenium
-        // 只有 5 個可用的 firefox 實例的網格，您可以確保不超過
-        // 一次啟動 5 個實例。
-        maxInstances: 5,
-        //
-        browserName: 'chrome',
-        acceptInsecureCerts: true
-        // 如果提供了 outputDir，WebdriverIO 可以捕獲驅動會話日誌
-        // 可以配置要包含/排除的日誌類型。
-        // excludeDriverLogs: ['*'], // 傳遞 '*' 排除所有驅動會話日誌
-        // excludeDriverLogs: ['bugreport', 'server'],
-        },
         {
             // maxInstances 可以根據功能被覆蓋。 因此，如果您有內部 Selenium
             // 只有 5 個可用的 firefox 實例的網格，您可以確保不超過
             // 一次啟動 5 個實例。
             maxInstances: 5,
             //
-            browserName: 'firefox'
-          }
+            browserName: 'chrome',
+            acceptInsecureCerts: true
+            // 如果提供了 outputDir，WebdriverIO 可以捕獲驅動會話日誌
+            // 可以配置要包含/排除的日誌類型。
+            // excludeDriverLogs: ['*'], // 傳遞 '*' 排除所有驅動會話日誌
+            // excludeDriverLogs: ['bugreport', 'server'],
+        },
+        // {
+        //     // maxInstances 可以根據功能被覆蓋。 因此，如果您有內部 Selenium
+        //     // 只有 5 個可用的 firefox 實例的網格，您可以確保不超過
+        //     // 一次啟動 5 個實例。
+        //     maxInstances: 5,
+        //     browserName: 'firefox'
+        // }
     ],
     //
     // ===================
@@ -117,8 +118,8 @@ let config = {
     // 服務接管您不想處理的特定工作。 他們增強
     // 你的測試設置幾乎不費吹灰之力。 與插件不同，它們不會添加新的
     // 命令。 相反，他們將自己融入到測試過程中。
-    services: ['chromedriver','intercept'],
-    
+    services: ['chromedriver', 'intercept'],
+
     // 您要運行規範的框架。
     // 支持以下幾種：Mocha、Jasmine 和 Cucumber
     // 另見：https://webdriver.io/docs/frameworks
@@ -127,7 +128,7 @@ let config = {
     // 在運行任何測試之前。
     framework: 'mocha',
     //
-    // 當整個spec文件失敗時重試整個spec文件的次數 
+    // 當整個spec文件失敗時重試整個spec文件的次數
     // spec File Retries: 1,
     //
     // 規範文件重試嘗試之間的延遲（以秒為單位）
@@ -141,7 +142,7 @@ let config = {
     // 另見：https://webdriver.io/docs/dot-reporter
     reporters: ['spec',
         [
-            'allure', 
+            'allure',
             {
                 outputDir: 'allure-results',
                 disableWebdriverStepsReporting: true,
@@ -149,7 +150,7 @@ let config = {
             }
         ]
     ],
-    
+
     //
     // 傳遞給 Mocha 的選項。
     // 查看完整列表 http://mochajs.org/
@@ -170,10 +171,10 @@ let config = {
      * @param {Object} config wdio configuration object
      * @param {Array.<Object>} capabilities list of capabilities details
      */
-     onPrepare: function (config, capabilities) {
+    onPrepare: function (config, capabilities) {
         allure.removeDir("./allure-report"); // 每次執行測試前，會把之前的allure保留的測試結果清空
         allure.removeDir("./allure-results");
-     },
+    },
     /**
      * Gets executed before a worker process is spawned and can be used to initialise specific service
      * for that worker as well as modify runtime environments in an async fashion.
@@ -236,7 +237,7 @@ let config = {
     /**
      * Function to be executed after a test (in Mocha/Jasmine).
      */
-    afterTest: function(test, context, { error, result, duration, passed, retries }) {
+    afterTest: function (test, context, { error, result, duration, passed, retries }) {
         if (!passed) {
             browser.takeScreenshot();
         }
@@ -285,7 +286,7 @@ let config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {<Object>} results object containing test results
      */
-    onComplete: function(exitCode, config, capabilities, results) {
+    onComplete: function (exitCode, config, capabilities, results) {
         const reportError = new Error('Could not generate Allure report')
         const generation = allure(['generate', 'allure-results', '--clean'])
         return new Promise((resolve, reject) => {
@@ -293,7 +294,7 @@ let config = {
                 () => reject(reportError),
                 5000)
 
-            generation.on('exit', function(exitCode) {
+            generation.on('exit', function (exitCode) {
                 clearTimeout(generationTimeout)
 
                 if (exitCode !== 0) {
@@ -316,30 +317,30 @@ let config = {
 
 switch (NODE_ENV) {
     case 'production':
-      config.baseUrl = 'http://xxxxxx';
-      config.reporters = ['dot', 'spec', 'allure'];
-      config.reporterOptions = {
-        junit: {
-          outputDir: './allure-results'
-        }
-      };
-      config.host = 'hub';
-      config.port = 4444;
-      break;
+        config.baseUrl = 'http://xxxxxx';
+        config.reporters = ['dot', 'spec', 'allure'];
+        config.reporterOptions = {
+            junit: {
+                outputDir: './allure-results'
+            }
+        };
+        config.host = 'hub';
+        config.port = 4444;
+        break;
     case 'test':
-      config.baseUrl = 'https://qa2-backstage.yile808.com'
-      config.reporters = ['dot', 'spec', 'allure'];
-      config.reporterOptions = {
-        junit: {
-          outputDir: './allure-results'
-        }
-      };
-      config.host = 'hub';
-      config.port = 4444;
-      break;
-  
+        config.baseUrl = 'https://qa2-backstage.yile808.com'
+        // config.reporters = ['dot', 'spec', 'allure'];
+        // config.reporterOptions = {
+        //     junit: {
+        //         outputDir: './allure-results'
+        //     }
+        // };
+        // config.host = 'hub';
+        // config.port = 4444;
+        break;
+
     default:
-      break;
-  }
+        break;
+}
 
 exports.config = config;
