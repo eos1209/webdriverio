@@ -1,7 +1,8 @@
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
 const allure = require("allure-commandline")
-exports.config = {
+
+let config = {
     //
     // ====================
     // 流道配置
@@ -313,13 +314,32 @@ exports.config = {
     //}
 }
 
-// if (NODE_ENV === 'production') {
-//   config.reporters = ['dot', 'spec', 'allure'];
-//   config.reporterOptions = {
-//     junit: {
-//       outputDir: './allure-results'
-//     }
-//   };
-//   config.host = 'hub';
-//   config.port = 4444;
-// }
+switch (NODE_ENV) {
+    case 'production':
+      config.baseUrl = 'http://xxxxxx';
+      config.reporters = ['dot', 'spec', 'allure'];
+      config.reporterOptions = {
+        junit: {
+          outputDir: './allure-results'
+        }
+      };
+      config.host = 'hub';
+      config.port = 4444;
+      break;
+    case 'test':
+      config.baseUrl = 'https://qa2-backstage.yile808.com'
+      config.reporters = ['dot', 'spec', 'allure'];
+      config.reporterOptions = {
+        junit: {
+          outputDir: './allure-results'
+        }
+      };
+      config.host = 'hub';
+      config.port = 4444;
+      break;
+  
+    default:
+      break;
+  }
+
+exports.config = config;

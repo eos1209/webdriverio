@@ -1,7 +1,7 @@
 const assert = require('assert')
 const AllureReporter = require("@wdio/allure-reporter").default
-const LoginPage = require('../../backstagePage/login.page');
-const MainPage = require('../../backstagePage/main.page');
+const LoginPage = require('../../pageobjects/login.page');
+const MainPage = require('../../pageobjects/main.page');
 let allLogs = {}
 let notSuccessRes = {}
 let errorPages = {}
@@ -39,7 +39,7 @@ describe('RD Test', () => {
                     AllureReporter.addAttachment(`ignorePage ${pageName}`, "")
                     continue
                 }
-            
+
                 // 點擊項目開啟頁面
                 MainPage.sideMenu[i-1].$$('a')[j].waitForDisplayed()
                 MainPage.sideMenu[i-1].$$('a')[j].scrollIntoView()
@@ -64,7 +64,7 @@ describe('RD Test', () => {
                     browser.takeScreenshot()
                     needReopen = true
                 }
-            
+
                 // 檢查是否有彈出提示窗，彈出表示可能有問題
                 browser.pause(600);
                 if (MainPage.notify.isDisplayed()) {
