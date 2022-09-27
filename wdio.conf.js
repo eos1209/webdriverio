@@ -102,7 +102,7 @@ let config = {
     // 使用 `/`，基本 url 會被添加，不包括你的 baseUrl 的路徑部分。
     // 如果您的 `url` 參數以沒有方案或 `/`（如 `some/path`）開頭，則基本 url
     // 直接被前置。
-    baseUrl: 'http://localhost',
+    baseUrl: 'https://qa2-backstage.yile808.com',
     //
     // 所有 waitFor* 命令的默認超時。
     waitforTimeout: 10000,
@@ -327,7 +327,7 @@ switch (NODE_ENV) {
         config.host = 'hub';
         config.port = 4444;
         break;
-    case 'test':
+    case 'devlove':
         config.baseUrl = 'https://qa2-backstage.yile808.com'
         // config.reporters = ['dot', 'spec', 'allure'];
         // config.reporterOptions = {
