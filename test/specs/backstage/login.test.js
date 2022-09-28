@@ -14,13 +14,10 @@ describe('登入/登出測試', () => {
     it('登入失敗', async () => {
         LoginPage.open();
         LoginPage.max();
-        LoginPage.pause();
         // 輸入帳號
-        // LoginPage.email.setValue(config.email); // 第二種導入測試資料的管理方式
-        console.log('LoginPage.content.account:', LoginPage.content.account);
+        // LoginPage.account.setValue(LoginPage.content.account); // 第二種導入測試資料的管理方式
         LoginPage.account.setValue(LoginPage.content.account);
         // 輸入錯誤密碼
-        console.log('LoginPage.content.worryPassword:', LoginPage.content.worryPassword);
         LoginPage.Password.setValue(LoginPage.content.worryPassword);
         // 按送出按鈕
         LoginPage.signInClick();
@@ -28,10 +25,10 @@ describe('登入/登出測試', () => {
         LoginPage.pause();
         // 檢查是否出現警告訊息
         LoginPage.waitAlertDangerIsExist();
-        // 警告訊息的文字內容，是否如預期
-        console.log('LoginPage.content.errorMessage:', LoginPage.content.errorMessage);
+        // 警告訊息的文字內容，是否如預期        
         let text = await LoginPage.alertDanger.getText();
-        console.log('LoginPage.alertDanger.getText()', text);
+        console.log('取得文字為：', text);
+        console.log('預期文字為：', LoginPage.content.errorMessage);
         expect(text).to.contain(LoginPage.content.errorMessage);
     });
 

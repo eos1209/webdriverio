@@ -6,7 +6,8 @@ let LoginPage = Object.create(Page, {
         get: () => {
             return {
                 account: 'cherry',
-                Password: 'cherry',
+                password: 'cherry',
+                worryAccount: 'rd123',
                 worryPassword: '1234',
                 errorMessage: '帳號或密碼錯誤'
             }
@@ -31,15 +32,12 @@ let LoginPage = Object.create(Page, {
     //登錄
     signIn: {
         get: function () {
-            // return browser.element('#root > div > div.mainView_mainView__3oY3e > div > div > div.MuiCardActions-root.MuiCardActions-spacing.css-1xgg0et > form > button');
             return $('#root > div > div.mainView_mainView__3oY3e > div > div > div.MuiCardActions-root.MuiCardActions-spacing.css-1xgg0et > form > button');
         }
     },
     alertDanger: {
         get: function () {
             // return browser.element('#root > div.SnackbarContainer-top.SnackbarContainer-right.SnackbarContainer-root.css-uwcd5u > div > div > div');
-            //*[@id="notistack-snackbar"]
-            ////*[@id="notistack-snackbar"]/svg
             return $('#notistack-snackbar');
         }
     },
@@ -72,9 +70,10 @@ let LoginPage = Object.create(Page, {
             this.signOut.click();
         }
     },
-    //錯誤彈窗
+    //取錯誤彈窗方法
     waitAlertDangerIsExist: {
         value: function () {
+            console.log("進錯誤視窗==>")
             this.alertDanger.waitForExist();
         }
     },
