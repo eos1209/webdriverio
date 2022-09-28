@@ -7,15 +7,17 @@ var con = require('../../wdio.conf');
 function Page() {
     this.title = 'My Page';
 }
-Page.prototype.open = function (path) {
-    browser.url(`${con.config.baseUrl}/${path}`);
+Page.prototype.open = async function (path) {
+    console.log('調用Uri=>', `${con.config.baseUrl}/${path}`);
+    await browser.url(`${con.config.baseUrl}/${path}`);
 };
-Page.prototype.pause = function (milliseconds) {
-    browser.pause(milliseconds);
+Page.prototype.pause = async function (milliseconds) {
+    console.log('暫停秒數=>', milliseconds);
+    await browser.pause(milliseconds);
 };
 
 Page.prototype.max = function () {
-    browser.maximizeWindow();
+    browser.setWindowSize(1024, 1024);
 }
 
 module.exports = new Page();

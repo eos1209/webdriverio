@@ -1,6 +1,4 @@
 const NODE_ENV = process.env.NODE_ENV || 'development';
-console.log('目前環境變數為：', NODE_ENV);
-
 const allure = require("allure-commandline")
 
 let config = {
@@ -71,9 +69,9 @@ let config = {
         //     browserName: 'firefox'
         // }
     ],
-    featureFlags: {
-        specFiltering: true
-    },
+    // featureFlags: {
+    //     specFiltering: true
+    // },
     //
     // ===================
     // 測試配置
@@ -105,7 +103,7 @@ let config = {
     // 使用 `/`，基本 url 會被添加，不包括你的 baseUrl 的路徑部分。
     // 如果您的 `url` 參數以沒有方案或 `/`（如 `some/path`）開頭，則基本 url
     // 直接被前置。
-    baseUrl: 'https://qa2-backstage.yile808.com',
+    baseUrl: 'http://localhost',
     //
     // 所有 waitFor* 命令的默認超時。
     waitforTimeout: 10000,
@@ -318,6 +316,7 @@ let config = {
     //}
 }
 
+console.log('目前環境變數為：', NODE_ENV);
 switch (NODE_ENV) {
     case 'production':
         config.baseUrl = 'http://xxxxxx';
@@ -343,6 +342,7 @@ switch (NODE_ENV) {
         break;
 
     default:
+        config.baseUrl = 'https://qa2-backstage.yile808.com'
         break;
 }
 

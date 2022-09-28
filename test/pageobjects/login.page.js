@@ -17,7 +17,7 @@ let LoginPage = Object.create(Page, {
     // 定義元素
     //帳號
     account: {
-        get: function () {            
+        get: function () {
             // return browser.element('#account'); //v5不再可用此方法
             return $('#account');
         }
@@ -53,7 +53,11 @@ let LoginPage = Object.create(Page, {
             Page.pause.call(this, 8000);
         }
     },
-
+    max: {
+        value: function () {
+            Page.max.call(this);
+        }
+    },
     /**
      *
      * 自訂方法

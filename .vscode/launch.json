@@ -2,17 +2,26 @@
     // 使用 IntelliSense 以得知可用的屬性。
     // 暫留以檢視現有屬性的描述。
     // 如需詳細資訊，請瀏覽: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
     "configurations": [
-        {
-            "name": "webdriverIO",
-            "type": "node",
-            "request": "launch",
-            "program": "${workspaceFolder}/wdio.conf.js",
-            "env":{
-                "port":"2555",
-                "NODE_ENV":"devlove"
-            }
-        }
+      {
+          "name": "webdriverIO",
+          "type": "node",
+          "request": "launch",
+          "program": "${workspaceFolder}/wdio.conf.js",
+          "env":{
+              "port": "2555",
+              "NODE_ENV": "devlove"
+          }
+      }
+    ],
+    "tasks": [
+      {
+        "label": "devlove",
+        "type": "shell",
+        "command": "npx wdio run ./wdio.conf.js || npx wdio run ./wdio.conf.api.js" //測試UI || 測試API
+      }
     ]
-}
+  }
