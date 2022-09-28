@@ -16,25 +16,31 @@ let LoginPage = Object.create(Page, {
     // 定義元素
     //帳號
     account: {
-        get: function () {
-            return browser.element('#account');
+        get: function () {            
+            // return browser.element('#account'); //v5不再可用此方法
+            return $('#account');
         }
     },
     //密碼
     Password: {
         get: function () {
-            return browser.element('#password');
+            // return browser.element('#password');
+            return $('#password');
         }
     },
     //登錄
     signIn: {
         get: function () {
-            return browser.element('#root > div > div.mainView_mainView__3oY3e > div > div > div.MuiCardActions-root.MuiCardActions-spacing.css-1xgg0et > form > button');
+            // return browser.element('#root > div > div.mainView_mainView__3oY3e > div > div > div.MuiCardActions-root.MuiCardActions-spacing.css-1xgg0et > form > button');
+            return $('#root > div > div.mainView_mainView__3oY3e > div > div > div.MuiCardActions-root.MuiCardActions-spacing.css-1xgg0et > form > button');
         }
     },
     alertDanger: {
         get: function () {
-            return browser.element('#root > div.SnackbarContainer-top.SnackbarContainer-right.SnackbarContainer-root.css-uwcd5u > div > div > div');
+            // return browser.element('#root > div.SnackbarContainer-top.SnackbarContainer-right.SnackbarContainer-root.css-uwcd5u > div > div > div');
+            //*[@id="notistack-snackbar"]
+            ////*[@id="notistack-snackbar"]/svg
+            return $('#notistack-snackbar');
         }
     },
 
@@ -46,7 +52,7 @@ let LoginPage = Object.create(Page, {
     },
     pause: {
         value: function () {
-            Page.pause.call(this, 3000);
+            Page.pause.call(this, 8000);
         }
     },
 

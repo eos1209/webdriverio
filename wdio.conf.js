@@ -71,6 +71,9 @@ let config = {
         //     browserName: 'firefox'
         // }
     ],
+    featureFlags: {
+        specFiltering: true
+    },
     //
     // ===================
     // 測試配置
