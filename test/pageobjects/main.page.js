@@ -23,22 +23,15 @@ let MainPage = Object.create(Page, {
             return $('#root > div > div.MuiDrawer-root.MuiDrawer-docked.sidebar_sidebar__3_5Jb.sidebar_drawerOpen__6Os9t.css-1tu59u4 > div > div.footer_footer__202bU > div.footer_userInfo__2lV9m > div');
         }
     },
-    //密碼
-    Password: {
-        get: function () {
-            // return browser.element('#password');
-            return $('#password');
-        }
-    },
     sideMenu: {
         get: function () {
             return $$('#root > div > div.MuiDrawer-root.MuiDrawer-docked.sidebar_sidebar__3_5Jb.sidebar_drawerOpen__6Os9t.css-1tu59u4 > div > nav > div');
         }
     },
-    //登錄
-    signIn: {
-        get: function () {
-            return $('#root > div > div.mainView_mainView__3oY3e > div > div > div.MuiCardActions-root.MuiCardActions-spacing.css-1xgg0et > form > button');
+    //登出按鍵
+    signOut:{
+        get: () => {
+            return $('#root > div > div.MuiDrawer-root.MuiDrawer-docked.sidebar_sidebar__3_5Jb.sidebar_drawerOpen__6Os9t.css-1tu59u4 > div > div.footer_footer__202bU > div.footer_functionalFooter__nd8uA > div:nth-child(1) > button')
         }
     },
     mainMenu: {
@@ -48,8 +41,13 @@ let MainPage = Object.create(Page, {
     },
     alertDanger: {
         get: function () {
-            // return browser.element('#root > div.SnackbarContainer-top.SnackbarContainer-right.SnackbarContainer-root.css-uwcd5u > div > div > div');
             return $('#notistack-snackbar');
+        }
+    },
+    //登出確認彈窗
+    signOutDanger: {
+        get: function () {
+            return $('body > div.MuiDialog-root.root--T\+awg.MuiModal-root.css-126xj0f > div.MuiDialog-container.MuiDialog-scrollPaper.css-ekeie0 > div > div.MuiDialogContent-root.MuiDialogContent-dividers.contentBlock--v1Q7k.css-1r09u4m');
         }
     },
     notify: {
@@ -94,12 +92,13 @@ let MainPage = Object.create(Page, {
      * 自訂方法
      *
      * */
-    //按送出按鈕
+    //按登錄按鈕
     signInClick: {
         value: function () {
             this.signIn.click();
         }
     },
+    //按登出按鈕
     signOutClick: {
         value: function () {
             this.signOut.click();
@@ -117,9 +116,10 @@ let MainPage = Object.create(Page, {
             this.alertInfo.waitForExist();
         }
     },
+    //取登出確認視窗
     waitSignOutIsExist: {
         value: function () {
-            this.signOut.waitForExist(7000);
+            this.signOutDanger.waitForExist(1000);
         }
     },
 });
