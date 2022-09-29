@@ -1,24 +1,25 @@
 const Page = require('./page');
+
+/**
+ * 首頁(Index)
+ * 
+ * 包含：『測試資料、選擇器、覆寫分享面方法、自定義方法』
+ * */
 let MainPage = Object.create(Page, {
 
     // 測試資料
     content: {
         get: () => {
             return {
-                account: 'cherry',
-                password: 'cherry',
-                worryAccount: 'rd123',
-                worryPassword: '1234',
-                errorMessage: '帳號或密碼錯誤'
+                accountText: 'Hi ~ , cherry'
             }
         }
     },
 
     // 定義元素
-    //帳號
-    account: {
+    //使用者歡迎字
+    UserWelcomeWord: {
         get: function () {
-            // return browser.element('#account'); //v5不再可用此方法
             return $('#root > div > div.MuiDrawer-root.MuiDrawer-docked.sidebar_sidebar__3_5Jb.sidebar_drawerOpen__6Os9t.css-1tu59u4 > div > div.footer_footer__202bU > div.footer_userInfo__2lV9m > div');
         }
     },

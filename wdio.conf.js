@@ -133,10 +133,10 @@ let config = {
     // spec File Retries: 1,
     //
     // 規範文件重試嘗試之間的延遲（以秒為單位）
-    // specFileRetriesDelay: 0,
+    specFileRetriesDelay: 1,
     //
     // 重試的規範文件是否應該立即重試或推遲到隊列末尾
-    // specFileRetriesDeferred: false,
+    specFileRetriesDeferred: false,
     //
     // 標準輸出的測試報告器。
     // 默認支持的唯一一個是 'dot'

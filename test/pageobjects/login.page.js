@@ -1,4 +1,10 @@
 const Page = require('./page');
+
+/**
+ * 登入頁(login)
+ * 
+ * 包含：『測試資料、選擇器、覆寫分享面方法、自定義方法』
+ * */
 let LoginPage = Object.create(Page, {
 
     // 測試資料
@@ -55,7 +61,7 @@ let LoginPage = Object.create(Page, {
     },
     max: {
         value: function () {
-            Page.max.call(this);
+            Page.max.call(this, 1024, 1024);
         }
     },
     /**
@@ -77,7 +83,6 @@ let LoginPage = Object.create(Page, {
     //取錯誤彈窗方法
     waitAlertDangerIsExist: {
         value: function () {
-            console.log("進錯誤視窗==>")
             this.alertDanger.waitForExist();
         }
     },
@@ -91,8 +96,5 @@ let LoginPage = Object.create(Page, {
             this.signOut.waitForExist(7000);
         }
     },
-
-
-
 });
 module.exports = LoginPage;
