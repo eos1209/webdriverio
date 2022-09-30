@@ -104,19 +104,17 @@ Page.prototype.refresh = () => {
 /**
  * newWindow当您想在新的浏览器窗口中打开一个新的 url 时使用命令。
  * 包括的其他参数是windoname 和窗口功能。您可以使用它们分别设置窗口的名称及其大小、位置等。
+ * * 範例:
+ *   describe("Browser Commands ", function() {
+ *             it("newWindow example ", function() {
+ *                browser.url("https://www.<code>ikeepstudying</code>.com/");
+ *                browser.newWindow( "https://www.google.com/", "Google Window", "width=800,height=700,resizable,scrollbars=yes,status=1" );
+ *                browser.pause(5000); console.log(browser.getTitle());
+ *   //opening Google and writing text on newly opened window $(".//input[@name='q']").setValue("lambdatest.com"); browser.pause(5000); }); });
  * @param {String} url 路徑
  */
-Page.prototype.newWindow = (url) => {
+Page.prototype.newPageWindow = (url) => {
     browser.newWindow(url);
-    /**
-     * 範例:
-     * describe("Browser Commands ", function() {
-            it("newWindow example ", function() {
-               browser.url("https://www.<code>ikeepstudying</code>.com/");
-               browser.newWindow( "https://www.google.com/", "Google Window", "width=800,height=700,resizable,scrollbars=yes,status=1" );
-               browser.pause(5000); console.log(browser.getTitle());
-             //opening Google and writing text on newly opened window $(".//input[@name='q']").setValue("lambdatest.com"); browser.pause(5000); }); });
-     */
 }
 
 /**
@@ -167,14 +165,12 @@ Page.prototype.dismissAlert = () => {
 
 /**
  * 獲取警報的文本。
+ * 範例:
+ * const msg = browser.getAlertText();
+ * console.log(msg);
  */
 Page.prototype.getAlertText = () => {
     browser.getAlertText();
-    /**
-     * 範例:
-     * const msg = browser.getAlertText();
-     * console.log(msg);
-     */
 }
 
 /**
