@@ -59,9 +59,9 @@ let LoginPage = Object.create(Page, {
             Page.pause.call(this, 8000);
         }
     },
-    max: {
+    setPageWindowSize: {
         value: function () {
-            Page.max.call(this, 1024, 1024);
+            Page.setPageWindowSize.call(this, 1024, 1024);
         }
     },
     /**

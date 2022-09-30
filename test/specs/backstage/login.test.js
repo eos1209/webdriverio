@@ -13,7 +13,7 @@ describe('登入/登出測試', () => {
 
     // it('登入失敗測試', async () => {
     //     LoginPage.open();
-    //     LoginPage.max();
+    //     LoginPage.setPageWindowSize();
     //     // 輸入帳號
     //     // LoginPage.account.setValue(LoginPage.content.account); // 第二種導入測試資料的管理方式
     //     await LoginPage.account.setValue(LoginPage.content.worryAccount);
@@ -33,7 +33,7 @@ describe('登入/登出測試', () => {
 
     // it('登入成功測試', async () => {
     //     LoginPage.open();
-    //     LoginPage.max();
+    //     LoginPage.setPageWindowSize();
         
     //     await LoginPage.account.setValue(LoginPage.content.account); // 輸入帳號        
     //     await LoginPage.Password.setValue(LoginPage.content.password); // 輸入密碼
@@ -48,7 +48,7 @@ describe('登入/登出測試', () => {
 
     it('登出測試', async () => {
         LoginPage.open();
-        LoginPage.max();
+        LoginPage.setPageWindowSize();
         
         await LoginPage.account.setValue(LoginPage.content.account); // 輸入帳號        
         await LoginPage.Password.setValue(LoginPage.content.password); // 輸入密碼
