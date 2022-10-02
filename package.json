@@ -15,7 +15,8 @@
         "allure-commandline": "^2.13.8",
         "axios": "^0.21.1",
         "chai": "^4.3.4",
-        "chromedriver": "^105.0.1"
+        "chromedriver": "^105.0.1",
+        "jquery": "^3.6.1"
     },
     "scripts": {
         "wdio": "wdio run wdio.conf.js"

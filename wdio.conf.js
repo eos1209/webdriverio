@@ -19,7 +19,7 @@ let config = {
     // 則當前工作目錄是您的 package.json 所在的位置，因此 `wdio` 將 從那裡被調用。
     //
     specs: [
-        './test/specs/**/login.test.js'
+        './test/specs/**/menu.test.js'
         // './test/specs/**/*.js'
     ],
     // 要排除的模式。

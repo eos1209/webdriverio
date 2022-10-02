@@ -15,9 +15,10 @@ let MainPage = Object.create(Page, {
             }
         }
     },
-
     // 定義元素
-    //使用者歡迎字
+    /**
+     * 使用者歡迎字
+     */
     UserWelcomeWord: {
         get: function () {
             return $('#root > div > div.MuiDrawer-root.MuiDrawer-docked.sidebar_sidebar__3_5Jb.sidebar_drawerOpen__6Os9t.css-1tu59u4 > div > div.footer_footer__202bU > div.footer_userInfo__2lV9m > div');
@@ -25,6 +26,7 @@ let MainPage = Object.create(Page, {
     },
     sideMenu: {
         get: function () {
+            //$$ 取得復數元素
             return $$('#root > div > div.MuiDrawer-root.MuiDrawer-docked.sidebar_sidebar__3_5Jb.sidebar_drawerOpen__6Os9t.css-1tu59u4 > div > nav > div');
         }
     },
@@ -40,7 +42,7 @@ let MainPage = Object.create(Page, {
         }
     },
     alertDanger: {
-        get: function () {
+        get: () => {
             return $('#notistack-snackbar');
         }
     },
@@ -77,20 +79,27 @@ let MainPage = Object.create(Page, {
     },
     // override 方法
     open: {
-        value: function () {
-            Page.open.call(this, 'index');
+        value: async () => {
+            await Page.open.call(this, 'index');
         }
     },
     pause: {
-        value: function () {
-            Page.pause.call(this, 8000);
+        value: async () => {
+           await Page.pause.call(this, 8000);
         }
     },
-
+    getWindowSize: {
+        value: () => {
+            Page.getWindowSize.call(this);
+        }
+    },
+    acceptAlert: {
+        value: () => {
+            Page.acceptAlert.call(this);
+        }
+    },
     /**
-     *
      * 自訂方法
-     *
      * */
     //按登錄按鈕
     signInClick: {
@@ -104,22 +113,18 @@ let MainPage = Object.create(Page, {
             this.signOut.click();
         }
     },
-    //取錯誤彈窗方法
+    /**
+     * 取提示彈窗方法
+     */
     waitAlertDangerIsExist: {
-        value: function () {
-            console.log("進錯誤視窗==>")
-            this.alertDanger.waitForExist();
-        }
-    },
-    waitAlertInfoIsExist: {
-        value: function () {
-            this.alertInfo.waitForExist();
+        value: async () => {
+            await this.alertDanger.waitForExist();
         }
     },
     //取登出確認視窗
     waitSignOutIsExist: {
-        value: function () {
-            this.signOutDanger.waitForExist(1000);
+        value: async () => {
+            await this.signOutDanger.waitForExist();
         }
     },
 });
