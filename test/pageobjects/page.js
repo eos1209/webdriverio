@@ -56,6 +56,15 @@ Page.prototype.getPageCookies = (names) => {
 };
 
 /**
+ * 攔截服務器請求
+ * 在瀏覽器中捕獲 ajax 調用。您總是必須調用 setup 函數以便稍後評估請求。
+ * @returns {Promise<void>}
+ */
+Page.prototype.setupPageInterceptor = async () => {
+    browser.setupInterceptor();
+};
+
+/**
  * 返回瀏覽器窗口大小
  */
  Page.prototype.getPageWindowSize = async () => {

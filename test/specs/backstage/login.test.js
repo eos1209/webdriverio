@@ -39,7 +39,7 @@ describe('登入/登出測試', () => {
         LoginPage.pause();
         let text = await MainPage.UserWelcomeWord.getText();
         // console.log('取得歡迎詞=>', text);
-        expect(text).toHaveTextContaining('Hi ~ , cherry');
+        expect(text).toHaveTextContaining(`Hi ~ , ${LoginPage.content.worryAccount}`);
     });
     it('登出測試', async () => {
         await MainPage.signOutClick();

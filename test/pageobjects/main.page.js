@@ -2,7 +2,7 @@ const Page = require('./page');
 
 /**
  * 首頁(Index)
- * 
+ *
  * 包含：『測試資料、選擇器、覆寫分享面方法、自定義方法』
  * */
 let MainPage = Object.create(Page, {
@@ -85,7 +85,7 @@ let MainPage = Object.create(Page, {
     },
     pause: {
         value: async () => {
-           await Page.pause.call(this, 8000);
+           await Page.pause.call(this, 2000);
         }
     },
     getWindowSize: {
@@ -98,16 +98,19 @@ let MainPage = Object.create(Page, {
             Page.acceptAlert.call(this);
         }
     },
+    //自訂方法
+
     /**
-     * 自訂方法
-     * */
-    //按登錄按鈕
+     * 按登錄按鈕
+     */
     signInClick: {
         value: function () {
             this.signIn.click();
         }
     },
-    //按登出按鈕
+    /**
+     * 按登出按鈕
+     */
     signOutClick: {
         value: function () {
             this.signOut.click();
@@ -121,11 +124,21 @@ let MainPage = Object.create(Page, {
             await this.alertDanger.waitForExist();
         }
     },
-    //取登出確認視窗
+    /**
+     * 取登出確認視窗
+     */
     waitSignOutIsExist: {
         value: async () => {
             await this.signOutDanger.waitForExist();
         }
     },
+    /**
+     * 攔截服務器請求
+     */
+    setupPageInterceptor: {
+        value: async () => {
+            await Page.setupPageInterceptor.call(this);
+        }
+    }
 });
 module.exports = MainPage;
