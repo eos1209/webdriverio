@@ -30,6 +30,13 @@ let MainPage = Object.create(Page, {
             return $$('#root > div > div.MuiDrawer-root.MuiDrawer-docked.sidebar_sidebar__3_5Jb.sidebar_drawerOpen__6Os9t.css-1tu59u4 > div > nav > div');
         }
     },
+    account: {
+        get: function () {
+            return $('#root > div > div.MuiDrawer-root.MuiDrawer-docked.sidebar_sidebar__3_5Jb.sidebar_drawerOpen__6Os9t.css-1tu59u4 > div > div.footer_footer__202bU > div.footer_userInfo__2lV9m > div');
+        }
+
+    },
+
     //登出按鍵
     signOut:{
         get: () => {
@@ -85,17 +92,25 @@ let MainPage = Object.create(Page, {
     },
     pause: {
         value: async () => {
-           await Page.pause.call(this, 2000);
+           await Page.pause.call(this, 1000);
         }
     },
     getWindowSize: {
-        value: () => {
-            Page.getWindowSize.call(this);
+        value: async () => {
+           await Page.getPageWindowSize.call(this);
         }
     },
     acceptAlert: {
         value: () => {
             Page.acceptAlert.call(this);
+        }
+    },
+    /**
+     * 攔截服務器請求
+     */
+    setupPageInterceptor: {
+        value: async () => {
+            await Page.setupPageInterceptor.call(this);
         }
     },
     //自訂方法
@@ -132,13 +147,5 @@ let MainPage = Object.create(Page, {
             await this.signOutDanger.waitForExist();
         }
     },
-    /**
-     * 攔截服務器請求
-     */
-    setupPageInterceptor: {
-        value: async () => {
-            await Page.setupPageInterceptor.call(this);
-        }
-    }
 });
 module.exports = MainPage;
